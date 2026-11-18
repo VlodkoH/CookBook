@@ -1,6 +1,6 @@
 /* CookBook Service Worker.
  * Bump CACHE_VERSION whenever any file in APP_SHELL (or recipes.json) changes. */
-const CACHE_VERSION = 'v10';
+const CACHE_VERSION = 'v12';
 const CACHE_PREFIX = 'cookbook-';
 const OLD_CACHE_PREFIX = 'ninjacookbook-';
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
@@ -12,6 +12,8 @@ const APP_SHELL = [
   'index.html',
   'manifest.json',
   'css/styles.css',
+  'fonts/caveat-cyrillic.woff2',
+  'fonts/caveat-latin.woff2',
   'js/theme-init.js',
   'js/app.js',
   'js/data.js',

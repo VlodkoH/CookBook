@@ -28,6 +28,7 @@ CookBook/
 ├── manifest.json           # Web App Manifest (відносні шляхи)
 ├── service-worker.js       # офлайн-кеш (CACHE_VERSION)
 ├── css/styles.css
+├── fonts/                  # рукописний шрифт Caveat (кирилиця + латиниця) та його ліцензія OFL.txt
 ├── js/
 │   ├── app.js              # точка входу: маршрутизація (#/, #/recipe/<id>, #/category/<id>), SW
 │   ├── data.js             # завантаження та нормалізація data/recipes.json
@@ -173,3 +174,5 @@ Service Worker кешує застосунок для офлайн-роботи.
 ## Ліцензія та джерела
 
 Ілюстрації та іконки створені для проєкту у форматі SVG. Технічні дані режимів узято з інструкції Ninja Foodi SmartLid OL650EU (`docs/`).
+
+Шрифт підзаголовка — [Caveat](https://github.com/googlefonts/caveat) (© The Caveat Project Authors), ліцензія SIL Open Font License 1.1 (`fonts/OFL.txt`).
