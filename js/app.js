@@ -79,7 +79,7 @@ function route() {
   } else if (section === 'category' && id) {
     if (renderCategory(id)) {
       show('category');
-      document.title = `${document.getElementById('category-title').textContent} — CookBook`;
+      document.title = `${document.getElementById('category-title').textContent.trim()} — CookBook`;
       focusView(document.getElementById('category-title'));
     } else {
       show('notfound');

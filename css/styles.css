@@ -231,6 +231,9 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
 }
 a.category:hover { border-color: var(--accent); transform: translateY(-2px); }
 .category__icon { font-size: 1.8rem; }
+.category__icon--img { width: 2.6rem; height: 2.6rem; }
+.category-icon--img { display: inline-block; width: 1.3em; height: 1.3em; vertical-align: -.3em; }
+.page-title__icon--img { display: inline-block; width: 1.2em; height: 1.2em; vertical-align: -.2em; }
 .category__name { font-weight: 700; }
 .category__count { color: var(--muted); font-size: .9rem; }
 .category--soon { opacity: .75; box-shadow: none; border-style: dashed; }

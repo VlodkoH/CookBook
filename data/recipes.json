@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "device": "OL650EU",
   "categories": [
-    { "id": "multicooker", "name": "Мультиварка", "icon": "🍲" },
+    { "id": "multicooker", "name": "Мультиварка", "icon": "🍲", "image": "icons/category-multicooker.svg" },
     { "id": "open-fire", "name": "На Вогні", "icon": "🔥" },
     { "id": "stovetop", "name": "На Плиті", "icon": "🍳" }
   ],

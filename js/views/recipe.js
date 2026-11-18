@@ -1,7 +1,7 @@
 import { getCategory, isSeedRecipe, hasOverride } from '../data.js';
 import { addRecent, getChecked, setChecked, deleteUserRecipe, saveUserRecipe, saveOverride, deleteOverride } from '../storage.js';
 import { escapeHtml, formatMinutes, formatNumber, plural, scaleAmount } from '../utils.js';
-import { favButtonHtml, imageSrc } from '../components.js';
+import { categoryIconHtml, favButtonHtml, imageSrc } from '../components.js';
 import { wakeLockSupported, setWakeLock, isActive as wakeLockActive } from '../wakelock.js';
 import { editFormHtml, editBarHtml, viewBarHtml, handleRowClick, readEditForm } from './recipe-edit.js';
 
@@ -89,7 +89,7 @@ function render() {
     <header class="recipe__header">
       <div class="recipe__media"><img src="${escapeHtml(imageSrc(r))}" alt="" width="800" height="500"></div>
       <div class="recipe__intro">
-        ${category ? `<p class="card__category">${escapeHtml(category.icon)} ${escapeHtml(category.name)}</p>` : ''}
+        ${category ? `<p class="card__category">${categoryIconHtml(category)} ${escapeHtml(category.name)}</p>` : ''}
         <h1 id="recipe-title" class="page-title" tabindex="-1">${escapeHtml(r.title)}</h1>
         ${r.description ? `<p class="recipe__desc">${escapeHtml(r.description)}</p>` : ''}
         ${facts.length ? `<dl class="facts">${facts.map(([k, v]) => `<div><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd></div>`).join('')}</dl>` : ''}
