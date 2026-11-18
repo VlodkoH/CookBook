@@ -86,6 +86,7 @@ export async function loadDatabase() {
       id: String(c.id),
       name: String(c.name),
       icon: c.icon || '🍽️',
+      subtitle: c.subtitle ? String(c.subtitle) : '',
       image: isSafeImageSrc(c.image) ? c.image : null
     })),
     recipes: json.recipes.filter((r) => r && r.id).map(normalizeRecipe)

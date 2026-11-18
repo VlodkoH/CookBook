@@ -16,6 +16,7 @@ const el = {
   recent: document.getElementById('recent-list'),
   clearRecent: document.getElementById('btn-clear-recent'),
   categoryTitle: document.getElementById('category-title'),
+  categorySubtitle: document.getElementById('category-subtitle'),
   categoryRecipes: document.getElementById('category-recipes')
 };
 
@@ -102,6 +103,8 @@ export function renderCategory(id) {
   const category = getCategory(id);
   if (!category) return false;
   el.categoryTitle.innerHTML = `${categoryIconHtml(category, 'page-title__icon')} ${escapeHtml(category.name)}`;
+  el.categorySubtitle.textContent = category.subtitle;
+  el.categorySubtitle.classList.toggle('hidden', !category.subtitle);
   const recipes = getAllRecipes()
     .filter((r) => r.category === id)
     .sort((a, b) => a.title.localeCompare(b.title, 'uk'));

@@ -151,7 +151,6 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
 .brand__icon { width: 44px; height: 44px; border-radius: 10px; flex: none; }
 .brand__text { display: flex; flex-direction: column; min-width: 0; }
 .brand__title { font-size: 1.25rem; font-weight: 800; letter-spacing: .2px; }
-.brand__model { font-size: .8rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .header-actions { display: flex; gap: 8px; flex: none; }
 
 /* Layout */
