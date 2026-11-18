@@ -2,16 +2,15 @@
   "schemaVersion": 1,
   "device": "OL650EU",
   "categories": [
-    { "id": "main", "name": "Основні страви", "icon": "🍲" },
-    { "id": "soups", "name": "Супи", "icon": "🥣" },
-    { "id": "sides", "name": "Гарніри", "icon": "🍚" },
-    { "id": "desserts", "name": "Десерти", "icon": "🍰" }
+    { "id": "multicooker", "name": "Мультиварка", "icon": "🍲" },
+    { "id": "open-fire", "name": "На Вогні", "icon": "🔥" },
+    { "id": "stovetop", "name": "На Плиті", "icon": "🍳" }
   ],
   "recipes": [
     {
       "id": "plov",
       "title": "Плов",
-      "category": "main",
+      "category": "multicooker",
       "description": "Плов зі свининою для Ninja Foodi SmartLid OL650EU: спершу зірвак під тиском, потім рис шаром зверху.",
       "servings": 5,
       "prepMinutes": null,

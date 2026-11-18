@@ -157,7 +157,7 @@ export function migrateLegacyRecipes() {
         saveUserRecipe({
           id: String(r.id),
           title: String(r.title || 'Без назви'),
-          category: 'main',
+          category: 'multicooker',
           description: String(r.description || ''),
           servings: null,
           prepMinutes: null,

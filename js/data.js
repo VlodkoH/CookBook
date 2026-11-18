@@ -41,7 +41,7 @@ export function normalizeRecipe(raw) {
   return {
     id: String(raw.id),
     title: String(raw.title || 'Без назви'),
-    category: String(raw.category || 'main'),
+    category: String(raw.category || 'multicooker'),
     description: String(raw.description || ''),
     servings: toNumberOrNull(raw.servings),
     prepMinutes: toNumberOrNull(raw.prepMinutes),
