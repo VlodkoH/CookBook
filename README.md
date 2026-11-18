@@ -1,4 +1,4 @@
-# NinjaCookBook
+# CookBook
 
 Україномовна інтерактивна книга рецептів у форматі PWA (Progressive Web App) для мультиварки **Ninja Foodi SmartLid OL650EU**. Працює офлайн, встановлюється на телефон чи комп'ютер і не потребує реєстрації.
 
@@ -23,7 +23,7 @@
 ## Структура
 
 ```
-NinjaCookBook/
+CookBook/
 ├── index.html              # розмітка всіх екранів
 ├── manifest.json           # Web App Manifest (відносні шляхи)
 ├── service-worker.js       # офлайн-кеш (CACHE_VERSION)
@@ -60,7 +60,7 @@ python -m http.server 8000
 
 **Варіант 2. VS Code + Live Server.** Встановіть розширення Live Server і натисніть **Go Live** у рядку стану.
 
-**Перевірка роботи з підшляху** (як на GitHub Pages). Запустіть сервер із **батьківської** папки й відкрийте `http://localhost:8000/NinjaCookBook/`:
+**Перевірка роботи з підшляху** (як на GitHub Pages). Запустіть сервер із **батьківської** папки й відкрийте `http://localhost:8000/CookBook/`:
 
 ```powershell
 cd ..
@@ -148,7 +148,7 @@ Service Worker кешує застосунок для офлайн-роботи.
 
 1. Закомітьте й запуште зміни в гілку `main`.
 2. На GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**, гілка `main`, папка `/ (root)`.
-3. За хвилину-дві застосунок буде доступний за адресою `https://<ім'я-користувача>.github.io/NinjaCookBook/`.
+3. За хвилину-дві застосунок буде доступний за адресою `https://<ім'я-користувача>.github.io/CookBook/`.
 
 Усі шляхи в проєкті відносні, тому застосунок працює як з підшляху, так і з кореня домену.
 

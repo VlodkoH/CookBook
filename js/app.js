@@ -55,7 +55,7 @@ function route() {
     const recipe = getRecipe(id);
     if (!recipe) {
       show('notfound');
-      document.title = 'Рецепт не знайдено — NinjaCookBook';
+      document.title = 'Рецепт не знайдено — CookBook';
     } else {
       renderRecipe(recipe, {
         onDeleted: () => {
@@ -64,7 +64,7 @@ function route() {
           location.hash = '#/';
         },
         onSaved: (saved) => {
-          document.title = `${saved.title} — NinjaCookBook`;
+          document.title = `${saved.title} — CookBook`;
           showToast('Рецепт збережено');
         },
         onReset: () => {
@@ -73,13 +73,13 @@ function route() {
         }
       });
       show('recipe');
-      document.title = `${recipe.title} — NinjaCookBook`;
+      document.title = `${recipe.title} — CookBook`;
       focusView(document.getElementById('recipe-title'));
     }
   } else if (section === 'category' && id) {
     if (renderCategory(id)) {
       show('category');
-      document.title = `${document.getElementById('category-title').textContent} — NinjaCookBook`;
+      document.title = `${document.getElementById('category-title').textContent} — CookBook`;
       focusView(document.getElementById('category-title'));
     } else {
       show('notfound');
@@ -87,7 +87,7 @@ function route() {
   } else {
     renderHome();
     show('home');
-    document.title = 'NinjaCookBook — рецепти для Ninja Foodi OL650EU';
+    document.title = 'CookBook — рецепти для Ninja Foodi OL650EU';
     focusView();
   }
   firstRoute = false;

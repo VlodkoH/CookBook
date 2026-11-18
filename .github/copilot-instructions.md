@@ -1,7 +1,7 @@
-# NinjaCookBook — Copilot Instructions
+# CookBook — Copilot Instructions
 
 ## Project overview
-NinjaCookBook is a Ukrainian-language interactive cookbook delivered as a Progressive Web App (PWA). It is tailored to the **Ninja Foodi SmartLid OL650EU** multicooker. It is hosted on GitHub Pages at `https://<username>.github.io/NinjaCookBook/` (a **subpath**, not the domain root).
+CookBook is a Ukrainian-language interactive cookbook delivered as a Progressive Web App (PWA). It is tailored to the **Ninja Foodi SmartLid OL650EU** multicooker. It is hosted on GitHub Pages at `https://<username>.github.io/CookBook/` (a **subpath**, not the domain root).
 
 ## Tech stack
 - HTML5, CSS3, JavaScript ES Modules. **Vanilla only**: no React, Angular, Vue, or other frameworks.
@@ -19,7 +19,7 @@ NinjaCookBook is a Ukrainian-language interactive cookbook delivered as a Progre
 
 ## Project structure
 ```
-NinjaCookBook/
+CookBook/
 ├── index.html
 ├── manifest.json
 ├── service-worker.js
