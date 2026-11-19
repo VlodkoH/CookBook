@@ -18,6 +18,11 @@
       "id": "stovetop",
       "name": "На Плиті",
       "icon": "🍳"
+    },
+    {
+      "id": "baking",
+      "name": "Випічка",
+      "icon": "🥐"
     }
   ],
   "recipes": [
