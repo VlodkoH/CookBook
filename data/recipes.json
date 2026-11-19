@@ -23,16 +23,7 @@
       "id": "baking",
       "name": "Випічка",
       "icon": "🎂"
-    },
-    { "id": "cold-dishes",
-	  "name": "Холодні Страви",
-	  "icon": "🥗"
-	},
-    { "id": "drinks",
-	   "name": "Напої",
-	   "icon": "🥤"
-	}
-],
+    }
   ],
   "recipes": [
     {
