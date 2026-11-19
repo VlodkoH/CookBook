@@ -75,8 +75,8 @@ function renderCategories() {
     const name = escapeHtml(c.name);
     const icon = categoryIconHtml(c, 'category__icon');
     if (!count) {
-      return `<li><div class="category category--soon" aria-label="${name}: скоро">${icon}
-        <span class="category__name">${name}</span><span class="badge">Скоро</span></div></li>`;
+	  return `<li><div class="category category--soon" aria-label="${name}: незабаром">${icon}
+        <span class="category__name">${name}</span><span class="badge">Незабаром</span></div></li>`;	
     }
     return `<li><a class="category" href="#/category/${encodeURIComponent(c.id)}">${icon}
       <span class="category__name">${name}</span>
