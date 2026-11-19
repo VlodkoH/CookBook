@@ -1,0 +1,67 @@
+name: Recipes
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+    paths:
+      - 'data/meta.json'
+      - 'data/recipes/**'
+      - 'data/recipes.json'
+      - 'tools/build_recipes.py'
+
+permissions:
+  contents: read
+
+jobs:
+  # Pull requests from forks may only add or edit recipe files.
+  fork-guard:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Only data/recipes/<id>.json may change
+        run: |
+          # HEAD is the PR merge commit, HEAD^1 is the target branch.
+          git diff --name-status --no-renames HEAD^1 HEAD | tee changes.txt
+          if grep -Ev '^[AM][[:space:]]+data/recipes/[a-z0-9][a-z0-9-]*\.json$' changes.txt; then
+            echo "::error::Pull requests from forks may only add or edit files data/recipes/<id>.json"
+            exit 1
+          fi
+
+  validate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/build_recipes.py --check
+
+  build:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: recipes-build-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: python3 tools/build_recipes.py
+
+      # Pushes made with GITHUB_TOKEN do not trigger this workflow again.
+      - name: Commit data/recipes.json
+        run: |
+          if git diff --quiet -- data/recipes.json; then
+            echo "data/recipes.json is up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/recipes.json
+          git commit -m "Rebuild data/recipes.json"
+          git push
