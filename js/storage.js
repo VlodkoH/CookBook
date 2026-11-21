@@ -1,13 +1,31 @@
+const KEY_PREFIX = 'cookbook.';
+const OLD_KEY_PREFIX = 'ninjacookbook.';
+
 const KEYS = {
-  favorites: 'ninjacookbook.favorites.v1',
-  recent: 'ninjacookbook.recent.v1',
-  theme: 'ninjacookbook.theme.v1',
-  userRecipes: 'ninjacookbook.userRecipes.v1',
-  overrides: 'ninjacookbook.overrides.v1',
-  checked: 'ninjacookbook.checked.v1',
-  legacyRecipes: 'ninjacookbook.recipes.v1',
-  legacyMigrated: 'ninjacookbook.legacyMigrated.v1'
+  favorites: 'cookbook.favorites.v1',
+  recent: 'cookbook.recent.v1',
+  theme: 'cookbook.theme.v1',
+  userRecipes: 'cookbook.userRecipes.v1',
+  overrides: 'cookbook.overrides.v1',
+  checked: 'cookbook.checked.v1',
+  legacyRecipes: 'cookbook.recipes.v1',
+  legacyMigrated: 'cookbook.legacyMigrated.v1'
 };
+
+// Moves data saved under the old "ninjacookbook." prefix to the new keys.
+(function migrateKeyPrefix() {
+  try {
+    for (const key of Object.values(KEYS)) {
+      const oldKey = OLD_KEY_PREFIX + key.slice(KEY_PREFIX.length);
+      const oldValue = localStorage.getItem(oldKey);
+      if (oldValue === null) continue;
+      if (localStorage.getItem(key) === null) localStorage.setItem(key, oldValue);
+      localStorage.removeItem(oldKey);
+    }
+  } catch {
+    // Storage unavailable; nothing to migrate.
+  }
+})();
 
 const RECENT_LIMIT = 6;
 
@@ -139,7 +157,7 @@ export function migrateLegacyRecipes() {
         saveUserRecipe({
           id: String(r.id),
           title: String(r.title || 'Без назви'),
-          category: 'main',
+          category: 'multicooker',
           description: String(r.description || ''),
           servings: null,
           prepMinutes: null,

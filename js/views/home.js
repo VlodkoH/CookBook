@@ -1,7 +1,7 @@
 import { getAllRecipes, getCategories, getCategory } from '../data.js';
 import { getFavorites, getRecent, clearRecent } from '../storage.js';
 import { escapeHtml, normalizeText, plural } from '../utils.js';
-import { renderCards } from '../components.js';
+import { categoryIconHtml, renderCards } from '../components.js';
 
 const el = {
   input: document.getElementById('search-input'),
@@ -16,6 +16,7 @@ const el = {
   recent: document.getElementById('recent-list'),
   clearRecent: document.getElementById('btn-clear-recent'),
   categoryTitle: document.getElementById('category-title'),
+  categorySubtitle: document.getElementById('category-subtitle'),
   categoryRecipes: document.getElementById('category-recipes')
 };
 
@@ -72,10 +73,10 @@ function renderCategories() {
   el.categories.innerHTML = getCategories().map((c) => {
     const count = all.filter((r) => r.category === c.id).length;
     const name = escapeHtml(c.name);
-    const icon = `<span class="category__icon" aria-hidden="true">${escapeHtml(c.icon)}</span>`;
+    const icon = categoryIconHtml(c, 'category__icon');
     if (!count) {
-      return `<li><div class="category category--soon" aria-label="${name}: скоро">${icon}
-        <span class="category__name">${name}</span><span class="badge">Скоро</span></div></li>`;
+	  return `<li><div class="category category--soon" aria-label="${name}: незабаром">${icon}
+        <span class="category__name">${name}</span><span class="badge">Незабаром</span></div></li>`;	
     }
     return `<li><a class="category" href="#/category/${encodeURIComponent(c.id)}">${icon}
       <span class="category__name">${name}</span>
@@ -101,7 +102,9 @@ export function renderHome() {
 export function renderCategory(id) {
   const category = getCategory(id);
   if (!category) return false;
-  el.categoryTitle.textContent = `${category.icon} ${category.name}`;
+  el.categoryTitle.innerHTML = `${categoryIconHtml(category, 'page-title__icon')} ${escapeHtml(category.name)}`;
+  el.categorySubtitle.textContent = category.subtitle;
+  el.categorySubtitle.classList.toggle('hidden', !category.subtitle);
   const recipes = getAllRecipes()
     .filter((r) => r.category === id)
     .sort((a, b) => a.title.localeCompare(b.title, 'uk'));

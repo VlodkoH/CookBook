@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "NinjaCookBook — рецепти для Ninja Foodi OL650EU",
-  "short_name": "NinjaCookBook",
+  "name": "CookBook — рецепти для Ninja Foodi OL650EU",
+  "short_name": "CookBook",
   "description": "Офлайн-книга рецептів для мультиварки Ninja Foodi SmartLid OL650EU.",
   "lang": "uk",
   "dir": "ltr",

@@ -8,6 +8,14 @@ export function imageSrc(recipe) {
   return isSafeImageSrc(recipe.image) ? recipe.image : PLACEHOLDER_IMAGE;
 }
 
+// Decorative: the category name is always rendered next to the icon.
+export function categoryIconHtml(category, className = 'category-icon') {
+  if (category.image) {
+    return `<img class="${className} ${className}--img" src="${escapeHtml(category.image)}" alt="" aria-hidden="true">`;
+  }
+  return `<span class="${className}" aria-hidden="true">${escapeHtml(category.icon)}</span>`;
+}
+
 export function favButtonHtml(recipe, { labelled = false, extraClass = '' } = {}) {
   const fav = isFavorite(recipe.id);
   const icon = `<span class="fav-btn__icon" aria-hidden="true">${fav ? '♥' : '♡'}</span>`;
@@ -30,7 +38,7 @@ export function recipeCardHtml(recipe) {
     <article class="card">
       <div class="card__media"><img src="${escapeHtml(imageSrc(recipe))}" alt="" loading="lazy" width="400" height="250"></div>
       <div class="card__body">
-        ${category ? `<p class="card__category">${escapeHtml(category.icon)} ${escapeHtml(category.name)}</p>` : ''}
+        ${category ? `<p class="card__category">${categoryIconHtml(category)} ${escapeHtml(category.name)}</p>` : ''}
         <h3 class="card__title"><a class="card__link" href="#/recipe/${encodeURIComponent(recipe.id)}">${escapeHtml(recipe.title)}</a></h3>
         ${recipe.description ? `<p class="card__desc">${escapeHtml(recipe.description)}</p>` : ''}
         ${meta.length ? `<p class="card__meta">${meta.join('')}</p>` : ''}

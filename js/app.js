@@ -1,4 +1,4 @@
-import { loadDatabase, getAllRecipes, getRecipe, getDevice } from './data.js';
+import { loadDatabase, getAllRecipes, getRecipe } from './data.js';
 import { toggleFavorite, migrateLegacyRecipes } from './storage.js';
 import { initTheme } from './theme.js';
 import { initHome, renderHome, renderCategory } from './views/home.js';
@@ -17,6 +17,8 @@ const views = {
 };
 const main = document.getElementById('main');
 const toast = document.getElementById('toast');
+const disclaimer = document.getElementById('disclaimer');
+const MULTICOOKER_CATEGORY = 'multicooker';
 let ready = false;
 let toastTimer = null;
 let firstRoute = true;
@@ -25,6 +27,10 @@ let restoringHash = false;
 
 function show(name) {
   Object.entries(views).forEach(([key, node]) => node.classList.toggle('hidden', key !== name));
+}
+
+function showDisclaimer(categoryId) {
+  disclaimer.classList.toggle('hidden', categoryId !== MULTICOOKER_CATEGORY);
 }
 
 function showToast(message) {
@@ -50,12 +56,13 @@ function route() {
   releaseWakeLock();
   const hash = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
   const [section, id] = hash.split('/');
+  showDisclaimer(null);
 
   if (section === 'recipe' && id) {
     const recipe = getRecipe(id);
     if (!recipe) {
       show('notfound');
-      document.title = 'Рецепт не знайдено — NinjaCookBook';
+      document.title = 'Рецепт не знайдено — CookBook';
     } else {
       renderRecipe(recipe, {
         onDeleted: () => {
@@ -64,7 +71,8 @@ function route() {
           location.hash = '#/';
         },
         onSaved: (saved) => {
-          document.title = `${saved.title} — NinjaCookBook`;
+          document.title = `${saved.title} — CookBook`;
+          showDisclaimer(saved.category);
           showToast('Рецепт збережено');
         },
         onReset: () => {
@@ -73,13 +81,15 @@ function route() {
         }
       });
       show('recipe');
-      document.title = `${recipe.title} — NinjaCookBook`;
+      showDisclaimer(recipe.category);
+      document.title = `${recipe.title} — CookBook`;
       focusView(document.getElementById('recipe-title'));
     }
   } else if (section === 'category' && id) {
     if (renderCategory(id)) {
       show('category');
-      document.title = `${document.getElementById('category-title').textContent} — NinjaCookBook`;
+      showDisclaimer(id);
+      document.title = `${document.getElementById('category-title').textContent.trim()} — CookBook`;
       focusView(document.getElementById('category-title'));
     } else {
       show('notfound');
@@ -87,7 +97,7 @@ function route() {
   } else {
     renderHome();
     show('home');
-    document.title = 'NinjaCookBook — рецепти для Ninja Foodi OL650EU';
+    document.title = 'CookBook — рецепти для Ninja Foodi OL650EU';
     focusView();
   }
   firstRoute = false;
@@ -124,8 +134,6 @@ async function start() {
     return;
   }
   migrateLegacyRecipes();
-  const device = getDevice();
-  if (device) document.getElementById('device-model').textContent = device;
   ready = true;
   updateCount();
   route();

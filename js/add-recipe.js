@@ -71,7 +71,7 @@ export function initAddDialog(savedCallback) {
     const recipe = {
       id: uid(),
       title,
-      category: String(data.get('category') || 'main'),
+      category: String(data.get('category') || 'multicooker'),
       description: String(data.get('description') || '').trim(),
       servings: Number.isInteger(servings) && servings > 0 ? servings : null,
       prepMinutes: null,

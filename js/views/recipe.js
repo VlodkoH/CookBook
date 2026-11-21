@@ -1,9 +1,10 @@
 import { getCategory, isSeedRecipe, hasOverride } from '../data.js';
 import { addRecent, getChecked, setChecked, deleteUserRecipe, saveUserRecipe, saveOverride, deleteOverride } from '../storage.js';
 import { escapeHtml, formatMinutes, formatNumber, plural, scaleAmount } from '../utils.js';
-import { favButtonHtml, imageSrc } from '../components.js';
+import { categoryIconHtml, favButtonHtml, imageSrc } from '../components.js';
 import { wakeLockSupported, setWakeLock, isActive as wakeLockActive } from '../wakelock.js';
 import { editFormHtml, editBarHtml, viewBarHtml, handleRowClick, readEditForm } from './recipe-edit.js';
+import { prepareContribution, copyText } from '../contribute.js';
 
 const MIN_SERVINGS = 1;
 const MAX_SERVINGS = 20;
@@ -89,7 +90,7 @@ function render() {
     <header class="recipe__header">
       <div class="recipe__media"><img src="${escapeHtml(imageSrc(r))}" alt="" width="800" height="500"></div>
       <div class="recipe__intro">
-        ${category ? `<p class="card__category">${escapeHtml(category.icon)} ${escapeHtml(category.name)}</p>` : ''}
+        ${category ? `<p class="card__category">${categoryIconHtml(category)} ${escapeHtml(category.name)}</p>` : ''}
         <h1 id="recipe-title" class="page-title" tabindex="-1">${escapeHtml(r.title)}</h1>
         ${r.description ? `<p class="recipe__desc">${escapeHtml(r.description)}</p>` : ''}
         ${facts.length ? `<dl class="facts">${facts.map(([k, v]) => `<div><dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd></div>`).join('')}</dl>` : ''}
@@ -97,10 +98,13 @@ function render() {
           <span data-fav-slot>${favButtonHtml(r, { labelled: true })}</span>
           ${wakeLockSupported ? `<button id="btn-wakelock" class="btn btn--ghost" type="button" aria-pressed="${wakeLockActive()}">
             <span aria-hidden="true">💡</span> Не вимикати екран</button>` : ''}
+          ${r.userAdded || hasOverride(r.id) ? `<button id="btn-contribute" class="btn btn--ghost" type="button" aria-controls="contribute-panel">
+            <span aria-hidden="true">📤</span> Скопіювати до книги</button>` : ''}
           ${r.userAdded ? '<button id="btn-delete" class="btn btn--danger" type="button">Видалити рецепт</button>' : ''}
         </div>
       </div>
     </header>
+    ${r.userAdded || hasOverride(r.id) ? '<section id="contribute-panel" class="panel contribute hidden" aria-labelledby="contribute-title" aria-live="polite"></section>' : ''}
 
     <div class="recipe__columns">
       <section class="panel" aria-labelledby="ingredients-title">
@@ -202,6 +206,36 @@ function saveChecks() {
   setChecked(current.id, indexes);
 }
 
+async function showContribution() {
+  const panel = container.querySelector('#contribute-panel');
+  const { json, filename, url, prefilled, isEdit } = prepareContribution(current);
+  const copied = await copyText(json);
+  const file = `<code>data/recipes/${escapeHtml(filename)}</code>`;
+  panel.innerHTML = `
+    <h2 id="contribute-title" class="section__title">Скопіювати до книги</h2>
+    <p class="contribute__status">${copied
+      ? 'Текст рецепта (JSON) скопійовано в буфер обміну.'
+      : 'Не вдалося скопіювати автоматично. Скопіюйте текст рецепта з поля «Показати JSON» нижче.'}</p>
+    <ol class="contribute__steps">
+      <li>Відкрийте GitHub (потрібен акаунт):
+        <a class="btn btn--primary" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
+          Відкрити GitHub <span aria-hidden="true">↗</span><span class="visually-hidden"> (у новій вкладці)</span></a></li>
+        <li>${isEdit
+        ? `Відкриється наявний файл ${file}. Виділіть увесь текст (Ctrl+A) і вставте скопійований JSON.`
+        : prefilled
+          ? `Файл ${file} уже заповнено. Перевірте вміст.`
+          : `Вставте скопійований текст у поле файлу ${file}.`}</li>
+      <li>Натисніть «Commit changes…», виберіть створення нової гілки та pull request («Propose changes»). Якщо ви не власник репозиторію, GitHub сам створить вашу копію (fork).</li>
+      <li>Рецепт з'явиться в книзі після перевірки власником. Параметри мультиварки в ньому позначаються як неперевірені, доки їх не звірять з інструкцією.</li>
+    </ol>
+    <details class="contribute__details">
+      <summary>Показати JSON</summary>
+      <textarea class="contribute__json" rows="12" readonly aria-label="JSON рецепта">${escapeHtml(json)}</textarea>
+    </details>`;
+  panel.classList.remove('hidden');
+  panel.querySelector('a').focus();
+}
+
 function updateWakeButton(active) {
   const btn = container.querySelector('#btn-wakelock');
   if (btn) btn.setAttribute('aria-pressed', String(active));
@@ -232,6 +266,7 @@ export function renderRecipe(recipe, { onDeleted, onSaved, onReset } = {}) {
       return saveChecks();
     }
     if (e.target.closest('#btn-wakelock')) return setWakeLock(!wakeLockActive(), updateWakeButton);
+    if (e.target.closest('#btn-contribute')) return showContribution();
     if (e.target.closest('#btn-delete')) {
       if (window.confirm(`Видалити рецепт «${current.title}»? Цю дію не можна скасувати.`)) {
         deleteUserRecipe(current.id);

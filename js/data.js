@@ -1,4 +1,5 @@
 import { getUserRecipes, getOverrides } from './storage.js';
+import { isSafeImageSrc } from './utils.js';
 
 export const SUPPORTED_SCHEMA_VERSION = 1;
 const DATA_URL = 'data/recipes.json';
@@ -41,7 +42,7 @@ export function normalizeRecipe(raw) {
   return {
     id: String(raw.id),
     title: String(raw.title || 'Без назви'),
-    category: String(raw.category || 'main'),
+    category: String(raw.category || 'multicooker'),
     description: String(raw.description || ''),
     servings: toNumberOrNull(raw.servings),
     prepMinutes: toNumberOrNull(raw.prepMinutes),
@@ -81,7 +82,13 @@ export async function loadDatabase() {
 
   db = {
     device: json.device || '',
-    categories: json.categories.map((c) => ({ id: String(c.id), name: String(c.name), icon: c.icon || '🍽️' })),
+    categories: json.categories.map((c) => ({
+      id: String(c.id),
+      name: String(c.name),
+      icon: c.icon || '🍽️',
+      subtitle: c.subtitle ? String(c.subtitle) : '',
+      image: isSafeImageSrc(c.image) ? c.image : null
+    })),
     recipes: json.recipes.filter((r) => r && r.id).map(normalizeRecipe)
   };
   return db;

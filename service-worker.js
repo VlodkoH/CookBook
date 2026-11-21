@@ -1,7 +1,8 @@
-/* NinjaCookBook Service Worker.
+/* CookBook Service Worker.
  * Bump CACHE_VERSION whenever any file in APP_SHELL (or recipes.json) changes. */
-const CACHE_VERSION = 'v5';
-const CACHE_PREFIX = 'ninjacookbook-';
+const CACHE_VERSION = 'v19';
+const CACHE_PREFIX = 'cookbook-';
+const OLD_CACHE_PREFIX = 'ninjacookbook-';
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `${CACHE_PREFIX}runtime-${CACHE_VERSION}`;
 
@@ -11,6 +12,8 @@ const APP_SHELL = [
   'index.html',
   'manifest.json',
   'css/styles.css',
+  'fonts/caveat-cyrillic.woff2',
+  'fonts/caveat-latin.woff2',
   'js/theme-init.js',
   'js/app.js',
   'js/data.js',
@@ -20,6 +23,7 @@ const APP_SHELL = [
   'js/components.js',
   'js/wakelock.js',
   'js/add-recipe.js',
+  'js/contribute.js',
   'js/views/home.js',
   'js/views/recipe.js',
   'js/views/recipe-edit.js',
@@ -28,8 +32,10 @@ const APP_SHELL = [
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
+  'icons/category-multicooker.svg',
   'images/recipe-placeholder.svg',
-  'images/plov.svg'
+  'images/plov.svg',
+  'images/plov-fast.svg'
 ];
 
 const scopeUrl = (path) => new URL(path, self.registration.scope).href;
@@ -46,7 +52,8 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
       .then((keys) => Promise.all(keys
-        .filter((k) => k.startsWith(CACHE_PREFIX) && k !== SHELL_CACHE && k !== RUNTIME_CACHE)
+        .filter((k) => k.startsWith(OLD_CACHE_PREFIX)
+          || (k.startsWith(CACHE_PREFIX) && k !== SHELL_CACHE && k !== RUNTIME_CACHE))
         .map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
