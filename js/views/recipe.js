@@ -220,7 +220,6 @@ async function showContribution() {
       <li>Відкрийте GitHub (потрібен акаунт):
         <a class="btn btn--primary" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
           Відкрити GitHub <span aria-hidden="true">↗</span><span class="visually-hidden"> (у новій вкладці)</span></a></li>
-      <li>${prefilled
         <li>${isEdit
         ? `Відкриється наявний файл ${file}. Виділіть увесь текст (Ctrl+A) і вставте скопійований JSON.`
         : prefilled
