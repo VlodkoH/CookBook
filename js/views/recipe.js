@@ -98,13 +98,13 @@ function render() {
           <span data-fav-slot>${favButtonHtml(r, { labelled: true })}</span>
           ${wakeLockSupported ? `<button id="btn-wakelock" class="btn btn--ghost" type="button" aria-pressed="${wakeLockActive()}">
             <span aria-hidden="true">💡</span> Не вимикати екран</button>` : ''}
-          ${r.userAdded ? `<button id="btn-contribute" class="btn btn--ghost" type="button" aria-controls="contribute-panel">
-            <span aria-hidden="true">📤</span> Скопіювати до книги</button>
-            <button id="btn-delete" class="btn btn--danger" type="button">Видалити рецепт</button>` : ''}
+          ${r.userAdded || hasOverride(r.id) ? `<button id="btn-contribute" class="btn btn--ghost" type="button" aria-controls="contribute-panel">
+            <span aria-hidden="true">📤</span> Скопіювати до книги</button>` : ''}
+          ${r.userAdded ? '<button id="btn-delete" class="btn btn--danger" type="button">Видалити рецепт</button>' : ''}
         </div>
       </div>
     </header>
-    ${r.userAdded ? '<section id="contribute-panel" class="panel contribute hidden" aria-labelledby="contribute-title" aria-live="polite"></section>' : ''}
+    ${r.userAdded || hasOverride(r.id) ? '<section id="contribute-panel" class="panel contribute hidden" aria-labelledby="contribute-title" aria-live="polite"></section>' : ''}
 
     <div class="recipe__columns">
       <section class="panel" aria-labelledby="ingredients-title">
@@ -208,7 +208,7 @@ function saveChecks() {
 
 async function showContribution() {
   const panel = container.querySelector('#contribute-panel');
-  const { json, filename, url, prefilled } = prepareContribution(current);
+  const { json, filename, url, prefilled, isEdit } = prepareContribution(current);
   const copied = await copyText(json);
   const file = `<code>data/recipes/${escapeHtml(filename)}</code>`;
   panel.innerHTML = `
@@ -221,8 +221,11 @@ async function showContribution() {
         <a class="btn btn--primary" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
           Відкрити GitHub <span aria-hidden="true">↗</span><span class="visually-hidden"> (у новій вкладці)</span></a></li>
       <li>${prefilled
-        ? `Файл ${file} уже заповнено. Перевірте вміст.`
-        : `Вставте скопійований текст у поле файлу ${file}.`}</li>
+        <li>${isEdit
+        ? `Відкриється наявний файл ${file}. Виділіть увесь текст (Ctrl+A) і вставте скопійований JSON.`
+        : prefilled
+          ? `Файл ${file} уже заповнено. Перевірте вміст.`
+          : `Вставте скопійований текст у поле файлу ${file}.`}</li>
       <li>Натисніть «Commit changes…», виберіть створення нової гілки та pull request («Propose changes»). Якщо ви не власник репозиторію, GitHub сам створить вашу копію (fork).</li>
       <li>Рецепт з'явиться в книзі після перевірки власником. Параметри мультиварки в ньому позначаються як неперевірені, доки їх не звірять з інструкцією.</li>
     </ol>

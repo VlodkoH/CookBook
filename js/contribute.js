@@ -1,4 +1,5 @@
 import { isSafeImageSrc } from './utils.js';
+import { isSeedRecipe } from './data.js';
 
 // Switch branch to 'main' once the site is published from main.
 export const GITHUB_REPO = { owner: 'VlodkoH', name: 'CookBook', branch: 'develop' };
@@ -52,13 +53,16 @@ export function prepareContribution(recipe) {
   const json = JSON.stringify(toBookRecipe(recipe), null, 2) + '\n';
   const { owner, name, branch } = GITHUB_REPO;
   const filename = `${recipe.id}.json`;
-  const base = `https://github.com/${owner}/${name}/new/${encodeURIComponent(branch)}/${RECIPES_DIR}`;
+  const isEdit = isSeedRecipe(recipe.id);
+  const base = `https://github.com/${owner}/${name}/${isEdit ? 'edit' : 'new'}/${encodeURIComponent(branch)}/${RECIPES_DIR}`;
+  if (isEdit) return { json, filename, prefilled: false, isEdit, url: `${base}/${filename}` };
   const prefilledUrl = `${base}?${new URLSearchParams({ filename, value: json })}`;
   const prefilled = prefilledUrl.length <= MAX_URL_LENGTH;
   return {
     json,
     filename,
     prefilled,
+    isEdit,
     url: prefilled ? prefilledUrl : `${base}?${new URLSearchParams({ filename })}`
   };
 }
