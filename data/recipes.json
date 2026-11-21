@@ -111,7 +111,7 @@
           "minutes": 8,
           "minutesMax": 10,
           "note": "У режимі Sear/Sauté таймер не налаштовується. Відміряйте час самостійно й вимкніть режим кнопкою START/STOP.",
-          "verified": false
+          "verified": true
         },
         {
           "stage": "Етап 2. Приготування рису",
@@ -120,7 +120,7 @@
           "temperature": null,
           "pressure": null,
           "minutes": null,
-          "verified": false
+          "verified": true
         },
         {
           "stage": "Етап 2. Приготування рису",
@@ -129,7 +129,7 @@
           "temperature": null,
           "pressure": null,
           "minutes": null,
-          "verified": false
+          "verified": true
         },
         {
           "stage": "Етап 2. Приготування рису",
@@ -139,7 +139,7 @@
           "pressure": "Low (LO)",
           "minutes": 15,
           "valve": "SEAL",
-          "verified": false
+          "verified": true
         },
         {
           "stage": "Етап 2. Приготування рису",
@@ -148,7 +148,7 @@
           "temperature": null,
           "pressure": null,
           "minutes": 10,
-          "verified": false
+          "verified": true
         },
         {
           "stage": "Етап 2. Приготування рису",
