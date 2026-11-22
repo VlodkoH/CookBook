@@ -1,0 +1,124 @@
+{
+  "id": "bograch",
+  "title": "Боґрач",
+  "category": "open-fire",
+  "description": "Густий наваристий боґрач з м'ясом, мисливськими ковбасками, фасолею та картоплею. М'ясо попередньо маринується в гірчиці зі спеціями.",
+  "servings": 10,
+  "prepMinutes": null,
+  "cookMinutes": 100,
+  "difficulty": "medium",
+  "tags": [
+    "м'ясо",
+    "фасоля",
+    "ковбаски",
+    "картопля"
+  ],
+  "ingredients": [
+    { "name": "Сало звичайне", "amount": 100, "unit": "г", "note": "дрібно нарізати" },
+    { "name": "Сало копчене", "amount": 50, "amountMax": 70, "unit": "г", "note": null },
+    { "name": "Цибуля", "amount": 300, "unit": "г", "note": null },
+    { "name": "Морква", "amount": 200, "unit": "г", "note": null },
+    { "name": "М'ясо: свинина, яловичина, жирна курятина", "amount": 800, "unit": "г", "note": null },
+    { "name": "Ковбаски мисливські", "amount": 300, "unit": "г", "note": null },
+    { "name": "Фасоля дрібна", "amount": 100, "amountMax": 150, "unit": "г", "note": null },
+    { "name": "Перець болгарський великий", "amount": 1, "unit": "шт.", "note": null },
+    { "name": "Помідори", "amount": 500, "unit": "г", "note": null },
+    { "name": "Картопля", "amount": 800, "unit": "г", "note": null },
+    { "name": "Паприка солодка", "amount": 1, "unit": "ч. л.", "note": null },
+    { "name": "Паприка копчена", "amount": 1, "unit": "ч. л.", "note": null },
+    { "name": "Перець чилі", "amount": 10, "unit": "г", "note": null },
+    { "name": "Чебрець (листочки)", "amount": 4, "unit": "шт.", "note": "у маринад" },
+    { "name": "Базилік (листочки)", "amount": 2, "unit": "шт.", "note": "у маринад" },
+    { "name": "Часник", "amount": 1, "unit": "головка", "note": "у маринад, нечищена, розрізана" },
+    { "name": "Гірчиця гостра", "amount": 1, "unit": "пачка", "note": "у маринад" },
+    { "name": "Олія", "amount": 20, "unit": "г", "note": "у маринад" },
+    { "name": "Сіль, перець чорний і духмяний, часник, листя петрушки", "amount": null, "unit": null, "note": "до смаку; чорний і духмяний перець також у маринад" }
+  ],
+  "steps": [
+    {
+      "stage": "Етап 0. Передпідготовка",
+      "text": "М'ясо нарізати дрібними порціями й просушити. Додати гірчицю та руками добре вим'яти.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": null,
+      "verified": true
+    },
+    {
+      "stage": "Етап 0. Передпідготовка",
+      "text": "Додати листочки чебрецю й базиліку, розрізану головку нечищеного часнику, чорний та духмяний перець і 20 г олії. Добре перемішати та поставити в прохолодне місце на кілька годин.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": null,
+      "note": "Маринувати 2–8 годин. Можна залишити в холодильнику на ніч.",
+      "verified": true
+    },
+    {
+      "stage": "Етап 1. Тушкування м'яса",
+      "text": "Дрібно нарізане сало розтопити й вийняти шкварки.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": null,
+      "verified": true
+    },
+    {
+      "stage": "Етап 1. Тушкування м'яса",
+      "text": "Додати нарізане копчене сало й топити.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": 5,
+      "verified": true
+    },
+    {
+      "stage": "Етап 1. Тушкування м'яса",
+      "text": "Додати дрібно нарізану цибулю й трохи обсмажити.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": 3,
+      "verified": true
+    },
+    {
+      "stage": "Етап 1. Тушкування м'яса",
+      "text": "Додати дрібно нарізану моркву й обсмажити.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": 5,
+      "verified": true
+    },
+    {
+      "stage": "Етап 1. Тушкування м'яса",
+      "text": "Додати м'ясо й, перемішуючи, обсмажити зі всіх боків. М'ясо пустить сік, тоді ще протушкувати під накритою кришкою на помірному вогні.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": 20,
+      "verified": true
+    },
+    {
+      "stage": "Етап 2. Тушкування з овочами",
+      "text": "Додати фасолю. Якщо рідини не вистачає, щоб покрити фасолю, долити води. Довести до кипіння.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": null,
+      "verified": true
+    },
+    {
+      "stage": "Етап 2. Тушкування з овочами",
+      "text": "Додати паприку та перець чилі. Добре перемішати й потушкувати.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": 2,
+      "verified": true
+    },
+    {
+      "stage": "Етап 2. Тушкування з овочами",
+      "text": "Додати мисливські ковбаски.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": null,
+      "verified": true
+    },
+    {
+      "stage": "Етап 2. Тушкування з овочами",
+      "text": "Додати нарізані помідори та дрібно нарізаний болгарський перець, перемішати й потушкувати.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": 20,
+      "verified": true
+    },
+    {
+      "stage": "Етап 2. Тушкування з овочами",
+      "text": "Додати картоплю, залити водою так, щоб вона на 3–5 см покривала страву. Накрити кришкою й готувати до готовності картоплі.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": 30,
+      "note": "Час приблизний (~30 хв).",
+      "verified": true
+    },
+    {
+      "stage": "Етап 2. Тушкування з овочами",
+      "text": "Зняти з вогню. Додати за смаком сіль, перець, часник і зелень. Накрити кришкою й дати трохи настоятися.",
+      "mode": null, "temperature": null, "pressure": null, "minutes": null,
+      "verified": true
+    }
+  ],
+  "tips": [
+    "До м'яса, що маринується, не можна додавати сіль. Взагалі. Сіль «забере» вологу з м'яса, а вона потрібна для тушкування овочів.",
+    "М'ясо птиці треба брати жирне."
+  ],
+  "image": null
+}
