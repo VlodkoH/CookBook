@@ -1,6 +1,6 @@
 /* CookBook Service Worker.
  * Bump CACHE_VERSION whenever any file in APP_SHELL (or recipes.json) changes. */
-const CACHE_VERSION = 'v26';
+const CACHE_VERSION = 'v27';
 const CACHE_PREFIX = 'cookbook-';
 const OLD_CACHE_PREFIX = 'ninjacookbook-';
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
@@ -37,7 +37,7 @@ const APP_SHELL = [
   'images/plov.jpg',
   'images/plov-fast.jpg',
   'images/bograch.jpg',
-  'images/bograch-bowl.jpg'
+  'images/bograch-multicooker.jpg'
 ];
 
 const scopeUrl = (path) => new URL(path, self.registration.scope).href;
