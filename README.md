@@ -153,7 +153,7 @@ python -m http.server 8000
       "verified": true
     }],
     "tips": ["Порада"],
-    "image": "images/plov.svg"
+    "image": "images/plov.jpg"
   }]
 }
 ```
