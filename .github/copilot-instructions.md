@@ -86,7 +86,7 @@ The structure may change if technically justified.
 - Light and dark themes: default to system preference, with a manual toggle and a persisted choice.
 - Kitchen-friendly: tap targets at least 44×44 px, large step text, Screen Wake Lock API ("keep screen on") where supported.
 - Accessibility: semantic HTML, `aria-*` attributes, full keyboard navigation, always-visible focus, WCAG AA contrast, respect `prefers-reduced-motion`.
-- No ads, no mandatory registration, no copyrighted photos. Use local SVG illustrations or neutral placeholders.
+- No ads, no mandatory registration, no copyrighted photos. Use local JPG illustrations or neutral placeholders.
 - Empty states must be handled:
   - Favorites empty: «Додайте рецепт в обране, натиснувши ♡»
   - Recently viewed empty: similar hint
