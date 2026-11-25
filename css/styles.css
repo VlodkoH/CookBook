@@ -140,6 +140,9 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
 .btn--primary { background: var(--gradient); color: var(--on-accent); border: none; }
 .btn--ghost { background: transparent; }
 .btn--danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+/* Wake-lock button: clearly red while "keep screen on" is active. */
+#btn-wakelock[aria-pressed="true"] { background: #dc2626; border-color: #dc2626; color: #ffffff; }
+#btn-wakelock[aria-pressed="true"]:hover { background: #b91c1c; border-color: #b91c1c; }
 .btn--icon { padding: 0; width: var(--tap); font-size: 1.2rem; }
 .btn--small { padding: 6px 12px; font-size: .9rem; }
 
