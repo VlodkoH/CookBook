@@ -5,8 +5,10 @@
     { "id": "multicooker", "name": "Мультиварка", "icon": "🍲", "image": "icons/category-multicooker.svg", "subtitle": "Ninja Foodi SmartLid OL650EU" },
     { "id": "open-fire", "name": "На Вогні", "icon": "🔥" },
     { "id": "stovetop", "name": "На Плиті", "icon": "🍳" },
-    { "id": "baking", "name": "Випічка", "icon": "🎂" },
-	{ "id": "cold-dishes", "name": "Холодні Страви", "icon": "🥗" },
-    { "id": "drinks", "name": "Напої", "icon": "🥤" }
+    { "id": "oven", "name": "У Духовці", "icon": "🍗" },
+    { "id": "baking", "name": "Солодке", "icon": "🍰" },
+    { "id": "cold-dishes", "name": "Холодні Страви", "icon": "🥗" },
+    { "id": "drinks", "name": "Напої", "icon": "🥤" },
+    { "id": "other", "name": "Інше", "icon": "🍽️" }
   ]
 }
