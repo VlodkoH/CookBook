@@ -1536,7 +1536,7 @@
       "servings": 5,
       "prepMinutes": null,
       "cookMinutes": 80,
-      "difficulty": null,
+      "difficulty": "medium",
       "tags": [
         "свинина",
         "рис",
