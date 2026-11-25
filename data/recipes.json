@@ -20,9 +20,14 @@
       "icon": "🍳"
     },
     {
+      "id": "oven",
+      "name": "У Духовці",
+      "icon": "🍗"
+    },
+    {
       "id": "baking",
-      "name": "Випічка",
-      "icon": "🎂"
+      "name": "Солодке",
+      "icon": "🍰"
     },
     {
       "id": "cold-dishes",
@@ -33,6 +38,11 @@
       "id": "drinks",
       "name": "Напої",
       "icon": "🥤"
+    },
+    {
+      "id": "other",
+      "name": "Інше",
+      "icon": "🍽️"
     }
   ],
   "recipes": [
