@@ -167,12 +167,12 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
 .brand__title { font-size: 1.5rem; font-weight: 800; letter-spacing: .2px; line-height: 1.1; }
 .brand__tagline,
 .brand__dedication { font-family: "Caveat", "Segoe Print", cursive; font-weight: 600; font-size: 1.05rem; color: var(--muted); line-height: 1.1; }
-/* Tagline sits one pixel larger than the dedication line. */
-.brand__tagline { font-size: calc(1.05rem + 1px); }
+/* Tagline is set larger than the dedication line. */
+.brand__tagline { font-size: 1.2rem; }
 @media (max-width: 420px) {
   .brand__tagline,
   .brand__dedication { font-size: .95rem; }
-  .brand__tagline { font-size: calc(.95rem + 1px); }
+  .brand__tagline { font-size: 1.1rem; }
 }
 .header-actions { display: flex; gap: 8px; flex: none; }
 
