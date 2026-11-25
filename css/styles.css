@@ -140,6 +140,9 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
 .btn--primary { background: var(--gradient); color: var(--on-accent); border: none; }
 .btn--ghost { background: transparent; }
 .btn--danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+/* Wake-lock button: ultraviolet neon while "keep screen on" is active. */
+#btn-wakelock[aria-pressed="true"] { background: #8b2cf5; border-color: #c084fc; color: #ffffff; box-shadow: 0 0 10px rgba(168, 85, 247, .7); }
+#btn-wakelock[aria-pressed="true"]:hover { background: #7c1ee8; border-color: #d8b4fe; }
 .btn--icon { padding: 0; width: var(--tap); font-size: 1.2rem; }
 .btn--small { padding: 6px 12px; font-size: .9rem; }
 
@@ -164,10 +167,15 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
 .brand { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; min-width: 0; }
 .brand__icon { width: 44px; height: 44px; border-radius: 10px; flex: none; }
 .brand__text { display: flex; flex-direction: column; min-width: 0; }
-.brand__title { font-size: 1.5rem; font-weight: 800; letter-spacing: .2px; line-height: 1.1; }
-.brand__tagline { font-family: "Caveat", "Segoe Print", cursive; font-weight: 600; font-size: 1.05rem; color: var(--muted); line-height: 1.1; }
+.brand__title { font-size: 1.65rem; font-weight: 800; letter-spacing: .2px; line-height: 1.1; }
+.brand__tagline,
+.brand__dedication { font-family: "Caveat", "Segoe Print", cursive; font-weight: 600; font-size: 1.05rem; color: var(--muted); line-height: 1.1; }
+/* Tagline is set larger than the dedication line. */
+.brand__tagline { font-size: 1.35rem; }
 @media (max-width: 420px) {
-  .brand__tagline { font-size: .95rem; }
+  .brand__tagline,
+  .brand__dedication { font-size: .95rem; }
+  .brand__tagline { font-size: 1.25rem; }
 }
 .header-actions { display: flex; gap: 8px; flex: none; }
 
@@ -591,7 +599,7 @@ a.category:hover { border-color: var(--accent); transform: translateY(-2px); }
   .btn__label { display: none; }
   .main { padding: 16px 12px 24px; }
   .hero { padding: 18px 14px; }
-  .brand__title { font-size: 1.1rem; }
+  .brand__title { font-size: 1.25rem; }
   .card-grid { grid-template-columns: 1fr; }
   .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .panel { padding: 16px 14px; }

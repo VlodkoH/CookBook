@@ -8,6 +8,7 @@ import { prepareContribution, copyText } from '../contribute.js';
 
 const MIN_SERVINGS = 1;
 const MAX_SERVINGS = 20;
+const DIFFICULTY_LABELS = { easy: 'Легка', medium: 'Середня', hard: 'Складна' };
 
 const container = document.getElementById('view-recipe');
 let current = null;
@@ -84,6 +85,7 @@ function render() {
   if (r.prepMinutes) facts.push(['Підготовка', formatMinutes(r.prepMinutes)]);
   if (r.cookMinutes) facts.push(['Готування', `≈ ${formatMinutes(r.cookMinutes)}`]);
   if (r.servings) facts.push(['Порцій', String(r.servings)]);
+  if (DIFFICULTY_LABELS[r.difficulty]) facts.push(['Складність', DIFFICULTY_LABELS[r.difficulty]]);
 
   container.innerHTML = `
     <a class="btn btn--ghost back-link" href="#/"><span aria-hidden="true">←</span> До рецептів</a>
