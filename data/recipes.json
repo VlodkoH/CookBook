@@ -1407,6 +1407,91 @@
       "image": "images/borshch.jpg"
     },
     {
+      "id": "pasta-orso",
+      "title": "Паста орзо",
+      "category": "stovetop",
+      "description": "",
+      "servings": 2,
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "difficulty": null,
+      "tags": [],
+      "ingredients": [
+        {
+          "name": "Макарони рісіні",
+          "amount": 200,
+          "unit": "г",
+          "note": null
+        },
+        {
+          "name": "Помідори черрі",
+          "amount": 7,
+          "unit": null,
+          "note": null
+        },
+        {
+          "name": "Шпинат",
+          "amount": 100,
+          "unit": "г",
+          "note": null
+        },
+        {
+          "name": "Вершки",
+          "amount": 70,
+          "unit": "г",
+          "note": null
+        },
+        {
+          "name": "Сіль",
+          "amount": 1,
+          "unit": "г",
+          "note": null
+        },
+        {
+          "name": "Твердий сир",
+          "amount": null,
+          "unit": null,
+          "note": null
+        }
+      ],
+      "steps": [
+        {
+          "text": "Помідори помити , розрізати навпіл.На пательню додати трішки олії та закинути помідори.Готувати доки шкірки не відпадатимуть з помідорів.Відставити",
+          "mode": null,
+          "temperature": null,
+          "pressure": null,
+          "minutes": null,
+          "verified": false
+        },
+        {
+          "text": "Шпинат помити і відрізати стебла.Закинути в пательню додавши води і накрити кришкою. Готувати доки він не стане темно зеленого кольору",
+          "mode": null,
+          "temperature": null,
+          "pressure": null,
+          "minutes": null,
+          "verified": true
+        },
+        {
+          "text": "До шпинату влити вершки та зачекати закипання.Додати макарони та помідори.Протушкувати",
+          "mode": null,
+          "temperature": null,
+          "pressure": null,
+          "minutes": null,
+          "verified": true
+        },
+        {
+          "text": "Посолити ,перемішати та вимкнути вогонь. Покласти зверху декілька шматочків твердого сиру і зачекати коли розплавиться",
+          "mode": null,
+          "temperature": null,
+          "pressure": null,
+          "minutes": null,
+          "verified": true
+        }
+      ],
+      "tips": [],
+      "image": "images/pasta-orso.jpg"
+    },
+    {
       "id": "plov-fast",
       "title": "Плов Швидкий",
       "category": "multicooker",
