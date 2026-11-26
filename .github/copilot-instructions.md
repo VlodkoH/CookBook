@@ -108,3 +108,12 @@ The structure may change if technically justified.
 - Work directly with project files; implement, don't just propose plans.
 - Analyze existing files first. Preserve useful code and don't overwrite it without need.
 - Ask questions only when it is impossible to proceed without the answer.
+
+## Category-specific recipe rules
+- `open-fire` («На Вогні»): before adding or editing a recipe, read and follow `.github/open-fire-recipes.md` (project doc `claude/open-fire-recipes.md`).
+- For these recipes it overrides the "Data integrity", "Recipe schema" and "Safety" sections where they conflict: no OL650EU checks, and no `mode`, `temperature`, `pressure`, `valve` or `verified` in steps.
+- Never inventing data still applies.
+
+- `stovetop` («На Плиті»): before adding or editing a recipe, read and follow `.github/stovetop-recipes.md` (project doc `claude/stovetop-recipes.md`).
+- For these recipes it overrides the same sections where they conflict: no OL650EU checks, and no `mode`, `pressure`, `valve` or `verified` in steps; `temperature` is allowed.
+
