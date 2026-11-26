@@ -40,6 +40,7 @@ The structure may change if technically justified.
 ## Language
 - All user-facing UI text, README, and recipe content: **Ukrainian**.
 - Code identifiers, code comments, and commit messages: **English**.
+- Use natural Ukrainian and avoid Russisms: «фасоля» (not «фасоль»), «страва» (not «блюдо» for food), «на великій тертці» (not «на крупній»).
 
 ## Data integrity (most important rule)
 - **Never invent technical data.** Cooking modes, pressure, temperatures, and times come only from files in `docs/` (the OL650EU manual) or from the user's own recipe.
