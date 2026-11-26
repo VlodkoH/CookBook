@@ -78,7 +78,7 @@ The structure may change if technically justified.
 }
 ```
 - Steps that use the multicooker must display `mode`, time, and pressure in a **separate block** on the step card.
-- Steps with `verified: false` show the badge «Перевірте за інструкцією».
+- `verified` is an internal data flag; it is not shown on the recipe page.
 - Changing the schema requires bumping `schemaVersion` and updating the README.
 
 ## UI/UX requirements
@@ -90,7 +90,7 @@ The structure may change if technically justified.
 - Empty states must be handled:
   - Favorites empty: «Додайте рецепт в обране, натиснувши ♡»
   - Recently viewed empty: similar hint
-  - Categories without recipes: hide, or show a «Скоро» badge
+  - Categories without recipes: show a «Незабаром» badge
   - Search with no results: «Нічого не знайдено» with a suggestion to change the query
 
 ## Safety
@@ -110,7 +110,7 @@ The structure may change if technically justified.
 - Ask questions only when it is impossible to proceed without the answer.
 
 ## Category-specific recipe rules
-- Recipes outside `multicooker`: first read `.github/recipes-common.md`, then the category guide (project docs use the same names under `claude/`):
+- Recipes outside `multicooker`: first read `.github/recipes-common.md`, then the category guide:
   - `open-fire` («На Вогні»): `.github/open-fire-recipes.md`
   - `stovetop` («На Плиті»): `.github/stovetop-recipes.md`
   - a category with no guide yet: follow "Перший рецепт у новій категорії" in `.github/recipes-common.md`.
