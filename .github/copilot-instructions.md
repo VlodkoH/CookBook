@@ -108,3 +108,11 @@ The structure may change if technically justified.
 - Work directly with project files; implement, don't just propose plans.
 - Analyze existing files first. Preserve useful code and don't overwrite it without need.
 - Ask questions only when it is impossible to proceed without the answer.
+
+## Category-specific recipe rules
+- Recipes outside `multicooker`: first read `.github/recipes-common.md`, then the category guide (project docs use the same names under `claude/`):
+  - `open-fire` («На Вогні»): `.github/open-fire-recipes.md`
+  - `stovetop` («На Плиті»): `.github/stovetop-recipes.md`
+  - a category with no guide yet: follow "Перший рецепт у новій категорії" in `.github/recipes-common.md`.
+- For these recipes the guides override the "Data integrity", "Recipe schema" and "Safety" sections where they conflict: no OL650EU checks, and no `mode`, `pressure`, `valve`, `verified` or empty fields in steps (`open-fire` also has no `temperature`). `tools/build_recipes.py` enforces this.
+- Never inventing data still applies to all categories.

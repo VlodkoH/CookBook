@@ -32,6 +32,11 @@ STEP_KEYS = {
 }
 CATEGORY_KEYS = {"id", "name", "icon", "image", "subtitle"}
 
+# Only multicooker recipes describe device settings; see .github/recipes-common.md.
+DEVICE_CATEGORY = "multicooker"
+DEVICE_STEP_KEYS = {"mode", "pressure", "valve", "verified"}
+CATEGORY_FORBIDDEN_STEP_KEYS = {"open-fire": {"temperature"}}
+
 errors = []
 
 
@@ -186,6 +191,15 @@ def check_recipe(path, recipe, category_ids):
                 error(path, f'{where}: "{key}" must be a non-negative number or null')
         if not isinstance(step.get("verified", True), bool):
             error(path, f'{where}: "verified" must be true or false')
+        category = recipe.get("category")
+        if category != DEVICE_CATEGORY:
+            forbidden = DEVICE_STEP_KEYS | CATEGORY_FORBIDDEN_STEP_KEYS.get(category, set())
+            present = sorted(k for k in forbidden if k in step)
+            if present:
+                error(path, f'{where}: field(s) {", ".join(present)} are not used in category "{category}"')
+            empty = sorted(k for k, v in step.items() if v is None or v == "")
+            if empty:
+                error(path, f'{where}: remove empty field(s) {", ".join(empty)}')
 
 
 def main():

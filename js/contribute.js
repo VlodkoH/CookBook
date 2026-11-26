@@ -7,12 +7,35 @@ const RECIPES_DIR = 'data/recipes';
 // Longer URLs risk HTTP 414 from GitHub; the JSON is then pasted from the clipboard instead.
 const MAX_URL_LENGTH = 8000;
 const TECH_FIELDS = ['mode', 'temperature', 'pressure', 'valve'];
+// Only multicooker recipes keep device fields; tools/build_recipes.py rejects them elsewhere.
+const DEVICE_CATEGORY = 'multicooker';
 
 const isSet = (v) => v !== null && v !== undefined && v !== '';
 
 function dropEmpty(obj, optionalKeys) {
   for (const key of optionalKeys) if (!isSet(obj[key])) delete obj[key];
   return obj;
+}
+
+function bookStep(s, category) {
+  const step = {
+    stage: s.stage,
+    text: s.text,
+    mode: s.mode,
+    temperature: s.temperature,
+    pressure: s.pressure,
+    minutes: s.minutes,
+    minutesMax: s.minutesMax,
+    valve: s.valve,
+    note: s.note,
+    // Device parameters stay unconfirmed until the reviewer checks them against the manual.
+    verified: TECH_FIELDS.some((k) => isSet(s[k])) ? false : s.verified
+  };
+  if (category === DEVICE_CATEGORY) return dropEmpty(step, ['stage', 'minutesMax', 'valve', 'note']);
+  // Other categories: no confirmation flag and no empty fields. Filled device fields are kept
+  // on purpose, so the recipe check flags them instead of the data being dropped silently.
+  delete step.verified;
+  return dropEmpty(step, Object.keys(step));
 }
 
 /** Converts a normalized user recipe into a data/recipes/<id>.json object. */
@@ -30,19 +53,7 @@ export function toBookRecipe(r) {
     ingredients: r.ingredients.map((i) => dropEmpty({
       name: i.name, amount: i.amount, amountMax: i.amountMax, unit: i.unit, note: i.note
     }, ['amountMax'])),
-    steps: r.steps.map((s) => dropEmpty({
-      stage: s.stage,
-      text: s.text,
-      mode: s.mode,
-      temperature: s.temperature,
-      pressure: s.pressure,
-      minutes: s.minutes,
-      minutesMax: s.minutesMax,
-      valve: s.valve,
-      note: s.note,
-      // Device parameters stay unconfirmed until the reviewer checks them against the manual.
-      verified: TECH_FIELDS.some((k) => isSet(s[k])) ? false : s.verified
-    }, ['stage', 'minutesMax', 'valve', 'note'])),
+    steps: r.steps.map((s) => bookStep(s, r.category)),
     tips: r.tips,
     image: isSafeImageSrc(r.image) && !/^https:/i.test(r.image) ? r.image : null
   };
