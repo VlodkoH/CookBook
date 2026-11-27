@@ -114,6 +114,7 @@ The structure may change if technically justified.
 - Recipes outside `multicooker`: first read `.github/recipes-common.md`, then the category guide:
   - `open-fire` («На Вогні»): `.github/open-fire-recipes.md`
   - `stovetop` («На Плиті»): `.github/stovetop-recipes.md`
+  - `cold-dishes` («Холодні Страви»): `.github/cold-dishes-recipes.md`
   - a category with no guide yet: follow "Перший рецепт у новій категорії" in `.github/recipes-common.md`.
 - For these recipes the guides override the "Data integrity", "Recipe schema" and "Safety" sections where they conflict: no OL650EU checks, and no `mode`, `pressure`, `valve`, `verified` or empty fields in steps (`open-fire` also has no `temperature`). `tools/build_recipes.py` enforces this.
 - Never inventing data still applies to all categories.
