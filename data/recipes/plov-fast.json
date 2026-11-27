@@ -5,7 +5,7 @@
   "description": "Плов зі свининою для Ninja Foodi SmartLid OL650EU: мариноване м'ясо, зірвак шарами й рис зверху під тиском.",
   "servings": 8,
   "prepMinutes": 15,
-  "cookMinutes": 95,
+  "cookMinutes": 85,
   "difficulty": "easy",
   "tags": [
     "свинина",
@@ -148,7 +148,7 @@
       "mode": "Pressure Cook",
       "temperature": null,
       "pressure": "Low (LO)",
-      "minutes": 20,
+      "minutes": 10,
       "valve": "SEAL",
       "note": "Не заповнюйте чашу вище лінії «МАКС. ТИСК» (PRESSURE MAX).",
       "verified": true
