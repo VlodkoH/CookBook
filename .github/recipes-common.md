@@ -12,7 +12,7 @@
 | На Плиті | `stovetop` | [`stovetop-recipes.md`](stovetop-recipes.md) | Борщ український класичний з пампушками |
 | У Духовці | `oven` | ще немає | — |
 | Солодке | `baking` | ще немає | — |
-| Холодні Страви | `cold-dishes` | ще немає | — |
+| Холодні Страви | `cold-dishes` | [`cold-dishes-recipes.md`](cold-dishes-recipes.md) | Кутя багата |
 | Напої | `drinks` | ще немає | — |
 | Інше | `other` | ще немає | — |
 
